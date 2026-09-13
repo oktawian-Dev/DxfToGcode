@@ -18,7 +18,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="16" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="16" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0"
@@ -59,8 +60,47 @@
                                TextWrapping="Wrap" />
                 </Grid>
             </GroupBox>
+            
+            <GroupBox Grid.Row="4" Header="Przypisanie kolorów DXF">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
 
-            <GroupBox Grid.Row="4" Header="Kopie projektu">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               VerticalAlignment="Center"
+                               Text="Klej zimny — T1 (niebieski):" />
+                    <TextBox x:Name="ColdGlueColorTextBox"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             Text="5" />
+
+                    <TextBlock Grid.Row="1"
+                               VerticalAlignment="Center"
+                               Text="Klej ciepły — T2 (żółty):" />
+                    <TextBox x:Name="HotGlueColorTextBox"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Text="2" />
+
+                    <TextBlock Grid.Row="2"
+                               VerticalAlignment="Center"
+                               Text="Ramka ograniczająca (magenta):" />
+                    <TextBox x:Name="FrameColorTextBox"
+                             Grid.Row="2"
+                             Grid.Column="1"
+                             Text="230" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="6" Header="Kopie projektu">
                 <StackPanel Margin="12">
                     <TextBlock Margin="0,0,0,10"
                                Text="Zaznacz układy, dla których ma zostać wygenerowany kod. Odbicie dotyczy środka ramki magenta." />
@@ -100,7 +140,7 @@
                 </StackPanel>
             </GroupBox>
 
-            <Button Grid.Row="6"
+            <Button Grid.Row="8"
                     Height="42"
                     Margin="0,20,0,0"
                     Content="Generuj plik G-code"
