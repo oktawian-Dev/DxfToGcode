@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="DXF → G-code"
-        Height="620"
-        Width="720"
-        MinHeight="620"
+        Height="760"
+        Width="900"
+        MinHeight="650"
         MinWidth="720"
         WindowStartupLocation="CenterScreen">
 
@@ -13,13 +13,20 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="16" />
+
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="16" />
+
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="16" />
+
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="16" />
+
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="16" />
+
+                <RowDefinition Height="260" />
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0"
@@ -43,7 +50,6 @@
 
                     <TextBox x:Name="DxfPathTextBox"
                              Grid.Row="0"
-                             Grid.Column="0"
                              IsReadOnly="True"
                              Text="Nie wybrano pliku DXF" />
 
@@ -60,12 +66,13 @@
                                TextWrapping="Wrap" />
                 </Grid>
             </GroupBox>
-            
+
             <GroupBox Grid.Row="4" Header="Przypisanie kolorów DXF">
                 <Grid Margin="12">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300" />
+                        <ColumnDefinition Width="80" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="100" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -110,6 +117,7 @@
                             <ColumnDefinition Width="110" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30" />
                             <RowDefinition Height="30" />
@@ -119,23 +127,66 @@
                             <RowDefinition Height="30" />
                         </Grid.RowDefinitions>
 
-                        <CheckBox Grid.Row="0" Grid.Column="0" Content="G54" IsChecked="True" VerticalAlignment="Center" />
-                        <CheckBox Grid.Row="0" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+                        <CheckBox x:Name="G54CheckBox"
+                                  Grid.Row="0"
+                                  Content="G54"
+                                  IsChecked="True"
+                                  VerticalAlignment="Center" />
+                        <CheckBox x:Name="G54MirrorCheckBox"
+                                  Grid.Row="0"
+                                  Grid.Column="1"
+                                  Content="Odbicie lustrzane"
+                                  VerticalAlignment="Center" />
 
-                        <CheckBox Grid.Row="1" Grid.Column="0" Content="G55" VerticalAlignment="Center" />
-                        <CheckBox Grid.Row="1" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+                        <CheckBox x:Name="G55CheckBox"
+                                  Grid.Row="1"
+                                  Content="G55"
+                                  VerticalAlignment="Center" />
+                        <CheckBox x:Name="G55MirrorCheckBox"
+                                  Grid.Row="1"
+                                  Grid.Column="1"
+                                  Content="Odbicie lustrzane"
+                                  VerticalAlignment="Center" />
 
-                        <CheckBox Grid.Row="2" Grid.Column="0" Content="G56" VerticalAlignment="Center" />
-                        <CheckBox Grid.Row="2" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+                        <CheckBox x:Name="G56CheckBox"
+                                  Grid.Row="2"
+                                  Content="G56"
+                                  VerticalAlignment="Center" />
+                        <CheckBox x:Name="G56MirrorCheckBox"
+                                  Grid.Row="2"
+                                  Grid.Column="1"
+                                  Content="Odbicie lustrzane"
+                                  VerticalAlignment="Center" />
 
-                        <CheckBox Grid.Row="3" Grid.Column="0" Content="G57" VerticalAlignment="Center" />
-                        <CheckBox Grid.Row="3" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+                        <CheckBox x:Name="G57CheckBox"
+                                  Grid.Row="3"
+                                  Content="G57"
+                                  VerticalAlignment="Center" />
+                        <CheckBox x:Name="G57MirrorCheckBox"
+                                  Grid.Row="3"
+                                  Grid.Column="1"
+                                  Content="Odbicie lustrzane"
+                                  VerticalAlignment="Center" />
 
-                        <CheckBox Grid.Row="4" Grid.Column="0" Content="G58" VerticalAlignment="Center" />
-                        <CheckBox Grid.Row="4" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+                        <CheckBox x:Name="G58CheckBox"
+                                  Grid.Row="4"
+                                  Content="G58"
+                                  VerticalAlignment="Center" />
+                        <CheckBox x:Name="G58MirrorCheckBox"
+                                  Grid.Row="4"
+                                  Grid.Column="1"
+                                  Content="Odbicie lustrzane"
+                                  VerticalAlignment="Center" />
 
-                        <CheckBox Grid.Row="5" Grid.Column="0" Content="G59" VerticalAlignment="Center" />
-                        <CheckBox Grid.Row="5" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+                        <CheckBox x:Name="G59CheckBox"
+                                  Grid.Row="5"
+                                  Content="G59"
+                                  VerticalAlignment="Center" />
+                        <CheckBox x:Name="G59MirrorCheckBox"
+                                  Grid.Row="5"
+                                  Grid.Column="1"
+                                  Content="Odbicie lustrzane"
+                                  VerticalAlignment="Center" />
                     </Grid>
                 </StackPanel>
             </GroupBox>
@@ -144,7 +195,23 @@
                     Height="42"
                     Margin="0,20,0,0"
                     Content="Generuj plik G-code"
-                    FontSize="16" />
+                    FontSize="16"
+                    Click="GenerateGCodeButton_Click" />
+
+            <GroupBox Grid.Row="10"
+                      Margin="0,16,0,0"
+                      Header="Podgląd wygenerowanego G-code">
+                <TextBox x:Name="GCodePreviewTextBox"
+                         Margin="12"
+                         AcceptsReturn="True"
+                         AcceptsTab="True"
+                         FontFamily="Consolas"
+                         FontSize="13"
+                         IsReadOnly="True"
+                         TextWrapping="NoWrap"
+                         VerticalScrollBarVisibility="Auto"
+                         HorizontalScrollBarVisibility="Auto" />
+            </GroupBox>
         </Grid>
     </ScrollViewer>
 </Window>
