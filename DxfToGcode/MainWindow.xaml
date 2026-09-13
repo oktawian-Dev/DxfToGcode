@@ -1,0 +1,95 @@
+﻿<Window x:Class="DxfToGcode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DXF → G-code"
+        Height="620"
+        Width="720"
+        MinHeight="620"
+        MinWidth="720"
+        WindowStartupLocation="CenterScreen">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="16" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="16" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="16" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Generator G-code z DXF"
+                       FontSize="26"
+                       FontWeight="SemiBold" />
+
+            <GroupBox Grid.Row="2" Header="Plik źródłowy">
+                <Grid Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="12" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="DxfPathTextBox"
+                             Grid.Column="0"
+                             IsReadOnly="True"
+                             Text="Nie wybrano pliku DXF" />
+
+                    <Button Grid.Column="2"
+                            Width="130"
+                            Content="Wybierz DXF" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="4" Header="Kopie projektu">
+                <StackPanel Margin="12">
+                    <TextBlock Margin="0,0,0,10"
+                               Text="Zaznacz układy, dla których ma zostać wygenerowany kod. Odbicie dotyczy środka ramki magenta." />
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+
+                        <CheckBox Grid.Row="0" Grid.Column="0" Content="G54" IsChecked="True" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="0" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+
+                        <CheckBox Grid.Row="1" Grid.Column="0" Content="G55" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="1" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+
+                        <CheckBox Grid.Row="2" Grid.Column="0" Content="G56" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="2" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+
+                        <CheckBox Grid.Row="3" Grid.Column="0" Content="G57" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="3" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+
+                        <CheckBox Grid.Row="4" Grid.Column="0" Content="G58" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="4" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+
+                        <CheckBox Grid.Row="5" Grid.Column="0" Content="G59" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="5" Grid.Column="1" Content="Odbicie lustrzane" VerticalAlignment="Center" />
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <Button Grid.Row="6"
+                    Height="42"
+                    Margin="0,20,0,0"
+                    Content="Generuj plik G-code"
+                    FontSize="16" />
+        </Grid>
+    </ScrollViewer>
+</Window>
