@@ -41,7 +41,8 @@
 
                     <Button Grid.Column="2"
                             Width="130"
-                            Content="Wybierz DXF" />
+                            Content="Wybierz DXF" 
+                            Click="SelectDxfButton_Click"/>
                 </Grid>
             </GroupBox>
 
