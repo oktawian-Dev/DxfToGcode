@@ -8,4 +8,8 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="IxMilia.Dxf" Version="0.8.4" />
+    </ItemGroup>
+
 </Project>

@@ -28,6 +28,12 @@
 
             <GroupBox Grid.Row="2" Header="Plik źródłowy">
                 <Grid Margin="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="8" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="12" />
@@ -35,14 +41,22 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBox x:Name="DxfPathTextBox"
+                             Grid.Row="0"
                              Grid.Column="0"
                              IsReadOnly="True"
                              Text="Nie wybrano pliku DXF" />
 
-                    <Button Grid.Column="2"
+                    <Button Grid.Row="0"
+                            Grid.Column="2"
                             Width="130"
-                            Content="Wybierz DXF" 
-                            Click="SelectDxfButton_Click"/>
+                            Content="Wybierz DXF"
+                            Click="SelectDxfButton_Click" />
+
+                    <TextBlock x:Name="DxfInfoTextBlock"
+                               Grid.Row="2"
+                               Grid.ColumnSpan="3"
+                               Text="Po wybraniu pliku tutaj pojawią się informacje o ścieżkach."
+                               TextWrapping="Wrap" />
                 </Grid>
             </GroupBox>
 
